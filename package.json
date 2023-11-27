@@ -2,7 +2,7 @@
   "scripts": {
     "start": "hardhat node",
     "build": "hardhat compile",
-    "test": "hardhat compile && node deploy.js && node index.js"
+    "test": "hardhat compile && node scripts/deploy.js && node scripts/index.js"
   },
   "type": "module",
   "dependencies": {

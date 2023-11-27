@@ -41,7 +41,7 @@ byte32Array.set(myBytes);
 
 console.log(byte32Array);
 
-registerUser(z, faceEmbedding);
+registerUser(byte32Array, faceEmbedding);
 
 // const inputFaceEmbedding = [2, 3, 4, 5, 6]; // Replace with the actual input face embedding
 // matchFace(inputFaceEmbedding);
