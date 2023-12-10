@@ -5,7 +5,11 @@ contract FaceRecognition {
     // Struct to store user information
     struct User {
         bytes32 userId;
-        int[] faceEmbedding;
+        FaceEmbedding faceEmbedding;
+    }
+    
+    struct FaceEmbedding {
+        int[] embedding;
     }
 
     // Mapping to store user information by their Ethereum address
@@ -20,7 +24,7 @@ contract FaceRecognition {
         
         User storage newUser = users[msg.sender];
         newUser.userId = _userId;
-        newUser.faceEmbedding = _faceEmbedding;
+        newUser.faceEmbedding = FaceEmbedding(_faceEmbedding);
 
         emit UserRegistered(msg.sender, _userId);
     }
@@ -32,7 +36,7 @@ contract FaceRecognition {
 
         for (uint256 i = 0; i < 10; i++) {
             User storage user = users[address(uint160(i))];
-            int distance = calculateDistance(user.faceEmbedding, _inputFaceEmbedding);
+            int distance = calculateDistance(user.faceEmbedding.embedding, _inputFaceEmbedding);
 
             if (distance < minDistance) {
                 minDistance = distance;
